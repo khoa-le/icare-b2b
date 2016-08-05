@@ -1,19 +1,21 @@
+employee_management:
+    build: dockerfile/employee_management
+    volumes:
+        - ./icare-employee-management/:/var/www/b2b/employee-management
 mysql_db:
     build: dockerfile/mysql
     ports:
         - "3306:3306"
     environment:
         MYSQL_ROOT_PASSWORD: root
-        MYSQL_USER: root
-        MYSQL_PASSWORD: root
 php7:
     build: dockerfile/php
     ports: 
         - "9000:9000"
     links: 
         - mysql_db
-    volumes:
-        - ./icare-employee-management/:/var/www/b2b/employee-management
+    volumes_from: 
+        - employee_management
 nginx:
     build: dockerfile/nginx
     ports:
@@ -21,6 +23,6 @@ nginx:
     links:
         - php7
     volumes_from: 
-        - php7
+        - employee_management
     volumes: 
         - ./logs/nginx/:/var/log/nginx

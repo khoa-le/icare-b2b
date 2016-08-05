@@ -15,7 +15,12 @@ RUN ln -s /usr/share/zoneinfo/UTC /etc/localtime
 RUN "date"
 
 #RUN docker-php-ext-install pdo pdo_mysql intl mcrypt
-
 RUN echo 'alias sf="php app/console"' >> ~/.bashrc
 
 RUN usermod -u 1000 www-data
+
+#Run composer install for the first
+#ADD init.sh /
+#USER www-data
+#RUN ["/init.sh"]
+#ENTRYPOINT ["/init-composer.sh"]
