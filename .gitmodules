@@ -1,3 +1,9 @@
 [submodule "icare-employee-management"]
 	path = icare-employee-management
 	url = https://github.com/khoa-le/icare-employee-management.git
+[submodule "icare-employee-installments"]
+	path = icare-employee-installments
+	url = https://github.com/khoa-le/icare-employee-installments.git
+[submodule "icare-b2b-web"]
+	path = icare-b2b-web
+	url = https://github.com/khoa-le/icare-b2b-web
